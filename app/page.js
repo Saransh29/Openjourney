@@ -1,9 +1,15 @@
+import CreatePost from "@/main/components/CreatePost";
+import Navbar from "@/main/navbar";
 import React from "react";
 
 const page = () => {
   return (
-    <div className="w-full  items-center text-center bg-gray-200 p-3">
-      <h1 className="text-3xl font-bold  ">Next Testing</h1>
+    <div>
+      <Navbar />
+      <div className="h-20"></div>
+      <div className="w-full items-center justify-center px-6">
+        <CreatePost />
+      </div>
     </div>
   );
 };
