@@ -130,7 +130,7 @@ w              // setPreviewImg(decoded);
         </p>
       </div>
 
-      <form className="px-3 mt-16 max-w-3xl" onSubmit={handleSubmit}>
+      <form className="px-3 mt-8 max-w-3xl" onSubmit={handleSubmit}>
         <div className="flex flex-col gap-5">
           <FormField
             labelName="Your Name"
@@ -151,13 +151,13 @@ w              // setPreviewImg(decoded);
             isSurpriseMe
             handleSurpriseMe={handleSurpriseMe}
           />
-          <div className="relative bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-64 p-3 h-64 flex justify-center items-center">
+          <div className="relative bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 w-64  h-64 flex justify-center items-center">
             {form.photo ? (
               <Image
                 // src={form.photo}
                 src={previewImg}
                 alt={form.prompt}
-                className="w-full h-full object-contain"
+                className="w-full h-full object-contain rounded-xl"
                 width={128}
                 height={128}
               ></Image>
@@ -187,7 +187,7 @@ w              // setPreviewImg(decoded);
           </button>
         </div>
 
-        <div className="mt-10">
+        {/* <div className="mt-10">
           <p className="mt-2 text-[#666e75] text-[14px]">
             ** Once you have created the image you want, you can share it with
             others in the community **
@@ -198,7 +198,8 @@ w              // setPreviewImg(decoded);
           >
             {loading ? "Sharing..." : "Share with the Community"}
           </button>
-        </div>
+        </div> */}
+        <div className="h-10"></div>
       </form>
     </section>
   );
