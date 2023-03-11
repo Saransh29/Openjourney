@@ -4,13 +4,13 @@ specifiers:
   '@next/font': 13.1.6
   '@vercel/analytics': ^0.1.11
   autoprefixer: ^10.4.13
-  ba64: ^3.0.9
   eslint: 8.33.0
   eslint-config-next: 13.1.6
+  fetch-base64: ^2.1.2
   file-saver: ^2.0.5
-  fs: 0.0.1-security
   next: 13.1.6
   next-themes: ^0.2.1
+  node-base64-image: ^2.0.4
   postcss: ^8.4.21
   react: 18.2.0
   react-dom: 18.2.0
@@ -21,13 +21,13 @@ specifiers:
 dependencies:
   '@next/font': 13.1.6
   '@vercel/analytics': 0.1.11_react@18.2.0
-  ba64: 3.0.9
   eslint: 8.33.0
   eslint-config-next: 13.1.6_eslint@8.33.0
+  fetch-base64: 2.1.2
   file-saver: 2.0.5
-  fs: 0.0.1-security
   next: 13.1.6_biqbaboplfbrettd7655fr4n2y
   next-themes: 0.2.1_3vryta7zmbcsw4rrqf4axjqggm
+  node-base64-image: 2.0.4
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-icons: 4.8.0_react@18.2.0
@@ -479,14 +479,18 @@ packages:
     engines: {node: '>=4'}
     dev: false
 
+  /axios/0.25.0:
+    resolution: {integrity: sha512-cD8FOb0tRH3uuEe6+evtAbgJtfxr7ly3fQjYcMcuPlgkwVS9xboaVIpcDV+cYQe+yGykgwZCs1pzjntcGa6l5g==}
+    dependencies:
+      follow-redirects: 1.15.2
+    transitivePeerDependencies:
+      - debug
+    dev: false
+
   /axobject-query/3.1.1:
     resolution: {integrity: sha512-goKlv8DZrK9hUh975fnHzhNIO4jUnFCfv/dszV5VwUGDFjI6vQ2VwoyjYjYNEbBE8AH87TduWP5uyDR1D+Iteg==}
     dependencies:
       deep-equal: 2.2.0
-    dev: false
-
-  /ba64/3.0.9:
-    resolution: {integrity: sha512-4Ig7uXwZtr04n6JPZBBFPBenKniX2gTsZnbPkWSea5OA70/j8PLWxxbHuCeX1KMFVzovMumGtxSNXTQF+pG6nw==}
     dev: false
 
   /balanced-match/1.0.2:
@@ -1121,6 +1125,13 @@ packages:
     dependencies:
       reusify: 1.0.4
 
+  /fetch-base64/2.1.2:
+    resolution: {integrity: sha512-APL3vK1yYXUZ5spJFmojP/xXepjpsJUy/4oCijsvOlHBm9lEJtqOHgFJD8AMP/Rlr/1DlGxLc5InA0SqFf05zA==}
+    engines: {node: '>= 7.5.0'}
+    dependencies:
+      mime-types: 2.1.35
+    dev: false
+
   /file-entry-cache/6.0.1:
     resolution: {integrity: sha512-7Gps/XWymbLk2QLYK4NzpMOrYjMhdIxXuIvy2QBsLE6ljuodKvdkWs/cpyJJ3CVIVpH0Oi1Hvg1ovbMzLdFBBg==}
     engines: {node: ^10.12.0 || >=12.0.0}
@@ -1158,6 +1169,16 @@ packages:
     resolution: {integrity: sha512-5nqDSxl8nn5BSNxyR3n4I6eDmbolI6WT+QqR547RwxQapgjQBmtktdP+HTBb/a/zLsbzERTONyUB5pefh5TtjQ==}
     dev: false
 
+  /follow-redirects/1.15.2:
+    resolution: {integrity: sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==}
+    engines: {node: '>=4.0'}
+    peerDependencies:
+      debug: '*'
+    peerDependenciesMeta:
+      debug:
+        optional: true
+    dev: false
+
   /for-each/0.3.3:
     resolution: {integrity: sha512-jqYfLp7mo9vIyQf8ykW2v7A+2N4QjeCeI5+Dz9XraiO1ign81wjiH7Fb9vSOWvQfNtmSa4H2RoQTrrXivdUZmw==}
     dependencies:
@@ -1170,10 +1191,6 @@ packages:
 
   /fs.realpath/1.0.0:
     resolution: {integrity: sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==}
-    dev: false
-
-  /fs/0.0.1-security:
-    resolution: {integrity: sha512-3XY9e1pP0CVEUCdj5BmfIZxRBTSDycnbqhIOGec9QYtmVH2fbLpj86CFWkrNOkt/Fvty4KZG5lTglL9j/gJ87w==}
     dev: false
 
   /fsevents/2.3.2:
@@ -1661,6 +1678,18 @@ packages:
       braces: 3.0.2
       picomatch: 2.3.1
 
+  /mime-db/1.52.0:
+    resolution: {integrity: sha512-sPU4uV7dYlvtWJxwwxHD0PuihVNiE7TyAbQ5SWxDCB9mUYvOgroQOwYQQOKPJ8CIbE+1ETVlOoK1UC2nU3gYvg==}
+    engines: {node: '>= 0.6'}
+    dev: false
+
+  /mime-types/2.1.35:
+    resolution: {integrity: sha512-ZDY+bPm5zTTF+YpCrAU9nK0UgICYPT0QtT1NZWFv4s++TNkcgVaT0g6+4R2uI4MjQjzysHB1zxuWL50hzaeXiw==}
+    engines: {node: '>= 0.6'}
+    dependencies:
+      mime-db: 1.52.0
+    dev: false
+
   /minimatch/3.1.2:
     resolution: {integrity: sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==}
     dependencies:
@@ -1741,6 +1770,15 @@ packages:
     transitivePeerDependencies:
       - '@babel/core'
       - babel-plugin-macros
+    dev: false
+
+  /node-base64-image/2.0.4:
+    resolution: {integrity: sha512-brh2nblaVT1/cIRH5gqDx6VpdmjCh2P1f/XpE6j+IJpXWfC7NkkclEaMcZSQ/KvZrXLML0z9a5qN0mRQ4LGMJA==}
+    engines: {node: '>=10'}
+    dependencies:
+      axios: 0.25.0
+    transitivePeerDependencies:
+      - debug
     dev: false
 
   /node-releases/2.0.10:
