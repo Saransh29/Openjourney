@@ -28,23 +28,25 @@ const CreatePost = () => {
       try {
         setGeneratingImg(true);
 
-        const response = await fetch("https://kind-jade-wombat-wear.cyclic.app/test-raw", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            prompt: form.prompt,
-            steps: 4,
-            height: 128,
-            width: 128,
-          }),
-        });
+        const response = await fetch(
+          "https://kind-jade-wombat-wear.cyclic.app/test-raw",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              prompt: form.prompt,
+              steps: 50,
+              height: 512,
+              width: 512,
+            }),
+          }
+        );
         const data = await response.json();
 
         setPreviewImg(`data:image/png;base64,${data.images[0]}`);
-        setForm({ ...form, photo: previewImg });
-
+        setForm({ ...form, photo: `data:image/png;base64,${data.images[0]}` });
       } catch (err) {
         alert(err);
       } finally {
@@ -84,13 +86,14 @@ const CreatePost = () => {
   };
 
   return (
-    <section className="max-w-7xl mx-auto">
+    <section className="max-w-7xl md:px-10 mx-auto">
       <div>
         <h1 className="px-3 font-extrabold text-[#222328] text-[32px]">
           Create
         </h1>
         <p className="px-3 mt-2 text-[#666e75] text-[14px] ">
-          Generate an imaginative image through Stable Diffusion AI - midjourney v4 Model. 
+          Generate an imaginative image through Stable Diffusion AI - midjourney
+          v4 Model.
         </p>
       </div>
 
@@ -122,8 +125,8 @@ const CreatePost = () => {
                 src={previewImg}
                 alt={form.prompt}
                 className="w-full h-full object-contain rounded-xl"
-                width={128}
-                height={128}
+                width={512}
+                height={512}
               ></Image>
             ) : (
               <Image
