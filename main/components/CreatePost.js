@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { preview } from "../assets";
 import { getRandomPrompt } from "../utils";
 import { FormField, Loader } from ".";
+import { AiOutlineGithub, AiOutlineLinkedin } from "react-icons/ai";
+
 import Image from "next/image";
 
 const CreatePost = () => {
@@ -85,7 +87,7 @@ const CreatePost = () => {
 
   return (
     <section className="md:px-10 mx-auto">
-      <div>
+      {/* <div>
         <h1 className="px-3 font-extrabold text-[#222328] text-[32px]">
           Create
         </h1>
@@ -93,11 +95,20 @@ const CreatePost = () => {
           Generate an imaginative image through Stable Diffusion AI - midjourney
           v4 Model.
         </p>
-      </div>
+      </div> */}
 
       <form className="px-3 mt-8 " onSubmit={handleSubmit}>
         <div className="flex flex-col lg:flex-row gap-5 justify-between">
           <div className="flex flex-col  gap-5 justify-center">
+            <div>
+              <h1 className=" font-extrabold text-[#222328] text-[32px]">
+                Create
+              </h1>
+              <p className=" mt-2 max-w-7xl text-[#666e75] text-[14px] pb-5">
+                Generate an imaginative image through Stable Diffusion AI -
+                midjourney v4 Model.
+              </p>
+            </div>
             <FormField
               labelName="Prompt"
               type="text"
@@ -116,7 +127,7 @@ const CreatePost = () => {
                     for="cfg"
                     class="block mb-2 text-sm font-medium text-gray-900 px-1"
                   >
-                    CFG 
+                    CFG
                   </label>
                   <div class="relative flex flex-col items-center group">
                     <svg
@@ -298,6 +309,36 @@ const CreatePost = () => {
 
         <div className="h-10"></div>
       </form>
+      {/* <div className="w-full flex flex-col items-start justify-center  px-6 bottom-0 ">
+        <div className="w-full flex flex-row items-center justify-center text-center text-1xl px-6 pt-9">
+          <p>Made by Saransh Bibiyan</p>
+          <div>
+            <div className=" m-2 p-5 rounded-xl flex flex-row items-center justify-center space-x-2 mb-1">
+              <a
+                href="https://github.com/Saransh29"
+                rel="noreferrer"
+                target="_blank"
+              >
+                <AiOutlineGithub
+                  className="hover:-translate-y-1 transition-transform cursor-pointer text-black "
+                  size={30}
+                />
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/saransh-bibiyan/"
+                rel="noreferrer"
+                target="_blank"
+              >
+                <AiOutlineLinkedin
+                  className="hover:-translate-y-1 transition-transform cursor-pointer text-black"
+                  size={30}
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div> */}
     </section>
   );
 };
