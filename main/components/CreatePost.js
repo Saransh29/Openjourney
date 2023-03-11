@@ -63,7 +63,7 @@ w              // setPreviewImg(decoded);
           });
           */
 
-        const response = await fetch("http://localhost:5000/test-raw", {
+        const response = await fetch("https://kind-jade-wombat-wear.cyclic.app/test-raw", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -153,14 +153,14 @@ w              // setPreviewImg(decoded);
           />
           <div className="relative bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-64 p-3 h-64 flex justify-center items-center">
             {form.photo ? (
-              <img
+              <Image
                 // src={form.photo}
                 src={previewImg}
                 alt={form.prompt}
                 className="w-full h-full object-contain"
                 width={128}
                 height={128}
-              ></img>
+              ></Image>
             ) : (
               <Image
                 src={preview}
