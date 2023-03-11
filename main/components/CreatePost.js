@@ -19,9 +19,9 @@ const CreatePost = () => {
     selectedSampler: "",
     selectedCfg: "",
   });
-  const [previewImg, setPreviewImg] = useState("Euler a");
+  const [previewImg, setPreviewImg] = useState("");
   const [selectedSteps, setSelectedSteps] = useState("30");
-  const [selectedSampler, setSelectedSampler] = useState("");
+  const [selectedSampler, setSelectedSampler] = useState("Euler a");
   const [selectedCfg, setSelectedCfg] = useState("7");
   const [generatingImg, setGeneratingImg] = useState(false);
   const [loading, setLoading] = useState(false);
