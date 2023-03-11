@@ -14,7 +14,7 @@ const NAV_ITEMS = [
   },
   {
     label: "Community",
-    page: "Community",
+    page: "community",
   },
 ];
 
@@ -28,7 +28,7 @@ export default function Navbar() {
           <div className="flex items-center justify-between py-3 md:py-3 md:block">
             <div className="md:py-1 md:block">
               <h2 className="text-4xl font-bold  text-inherit ">
-                Saransh Bibiyan
+                <a href="/">OpenJourney</a>
               </h2>
             </div>
             <div className="md:hidden">
@@ -55,13 +55,13 @@ export default function Navbar() {
             <div className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
               {NAV_ITEMS.map((item, idx) => {
                 return (
-                  <Link
+                  <a
                     key={idx}
-                    to={item.page}
+                    href={item.page}
                     className={
                       "block lg:inline-block text-inherit  cursor-pointer"
                     }
-                    activeClass="active"
+                    // activeClass="active"
                     spy={true}
                     smooth={true}
                     offset={-100}
@@ -70,7 +70,7 @@ export default function Navbar() {
                     onClick={() => setNavbar(!navbar)}
                   >
                     {item.label}
-                  </Link>
+                  </a>
                 );
               })}
               

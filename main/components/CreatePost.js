@@ -28,41 +28,6 @@ const CreatePost = () => {
       try {
         setGeneratingImg(true);
 
-        // blob base64 method (not working)
-        /*
-        let beg = "data:image/png;base64";
-
-        fetch("http://localhost:5000/test-cs", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            prompt: form.prompt,
-            steps: 4,
-            height: 128,
-            width: 128,
-          }),
-        })
-          .then((response) => response.blob())
-          .then((blob) => {
-            console.log(blob);
-            const reader = new FileReader();
-            reader.readAsDataURL(blob);
-            reader.onloadend = () => {
-              const base64data = reader.result;
-              // console.log(base64data.slice(22))
-              // let decoded = window.btoa(base64data.slice(14));
-
-              // let decoded = Buffer.from(base64data.slice(22), "utf-8");
-w              // setPreviewImg(decoded);
-              // console.log(decoded)
-              
-              // setPreviewImg(beg + base64data.slice(14)); // the base64 string
-            };
-          });
-          */
-
         const response = await fetch("https://kind-jade-wombat-wear.cyclic.app/test-raw", {
           method: "POST",
           headers: {
@@ -124,9 +89,8 @@ w              // setPreviewImg(decoded);
         <h1 className="px-3 font-extrabold text-[#222328] text-[32px]">
           Create
         </h1>
-        <p className="px-3 mt-2 text-[#666e75] text-[14px] max-w-[500px]">
-          Generate an imaginative image through DALL-E AI and share it with the
-          community
+        <p className="px-3 mt-2 text-[#666e75] text-[14px] ">
+          Generate an imaginative image through Stable Diffusion AI - midjourney v4 Model. 
         </p>
       </div>
 
