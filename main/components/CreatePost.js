@@ -30,7 +30,7 @@ const CreatePost = () => {
   useEffect(() => {
     if (loading) {
       const interval = setInterval(() => {
-        fetch("http://localhost:5000/progress")
+        fetch("https://kind-jade-wombat-wear.cyclic.app/progress")
           .then((res) => res.json())
           .then((data) => {
             setProgress(data.progress);
