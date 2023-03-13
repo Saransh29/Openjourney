@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { preview } from "../assets";
 import { getRandomPrompt } from "../utils";
 import { FormField, Loader } from ".";
-import { AiOutlineGithub, AiOutlineLinkedin } from "react-icons/ai";
 
 import Image from "next/image";
 
@@ -20,7 +19,7 @@ const CreatePost = () => {
     selectedCfg: "",
   });
   const [previewImg, setPreviewImg] = useState("");
-  const [selectedSteps, setSelectedSteps] = useState("30");
+  const [selectedSteps, setSelectedSteps] = useState("40");
   const [selectedSampler, setSelectedSampler] = useState("Euler a");
   const [selectedCfg, setSelectedCfg] = useState("7");
   const [generatingImg, setGeneratingImg] = useState(false);
@@ -267,6 +266,18 @@ const CreatePost = () => {
                 </button>
               </div>
               {/* <button >Test</button> */}
+            </div>
+            <div>
+              <div>
+                <p className=" mt-2 max-w-7xl text-[#666e75] text-[14px] px-2">
+                  Using &quot;DMP2&quot; a Sampler provides best results , but
+                  will take longer.
+                </p>
+                <p className=" mt-2 max-w-7xl text-[#666e75] text-[14px] px-2">
+                  Use &quot;LMS&quot; or &quot;Euler a&quot; & less steps for
+                  quick results.
+                </p>
+              </div>
             </div>
           </div>
           <div className="flex flex-end">
