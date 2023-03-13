@@ -4,10 +4,10 @@ import { Link } from "react-scroll/modules";
 import { IoMdMenu, IoMdClose } from "react-icons/io";
 
 const NAV_ITEMS = [
-  // {
-  //   label: "Home",
-  //   page: "home",
-  // },
+  {
+    label: "Wall",
+    page: "wall",
+  },
   {
     label: "About",
     page: "about",
