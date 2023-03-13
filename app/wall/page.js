@@ -9,7 +9,7 @@ const photos = [
     height: 4,
   },
   {
-    src: "https://openjourney-next.vercel.app/download.png",
+    src: "http://localhost:3000/download (9).png",
     width: 1,
     height: 1,
   },
@@ -20,9 +20,9 @@ const photos = [
   },
 
   {
-    src: "https://openjourney-next.vercel.app/1.png",
-    width: 3,
-    height: 3,
+    src: "https://openjourney-next.vercel.app/download (14).png",
+    width: 1,
+    height: 1,
   },
 
   {
@@ -36,17 +36,18 @@ const photos = [
     height: 4,
   },
   {
-    src: "https://openjourney-next.vercel.app/download (4).png",
-    width: 4,
-    height: 4,
-  },
-  {
     src: "https://openjourney-next.vercel.app/1233.png",
     width: 3,
     height: 4,
   },
   {
-    src: "https://openjourney-next.vercel.app/download (5).png",
+    src: "http://localhost:3000/download.png",
+    width: 4,
+    height: 4,
+  },
+
+  {
+    src: "https://openjourney-next.vercel.app/og.png",
     width: 4,
     height: 4,
   },
@@ -68,35 +69,71 @@ const photos = [
     height: 4,
   },
   {
-    src: "https://openjourney-next.vercel.app/1236.png",
-    width: 3,
-    height: 4,
-  },
-  {
     src: "https://openjourney-next.vercel.app/download (13).png",
     width: 4,
     height: 4,
   },
   {
-    src: "https://openjourney-next.vercel.app/download123.png",
-    width: 4,
-    height: 4,
-  },
-  {
-    src: "https://openjourney-next.vercel.app/download (1).png",
+    src: "http://localhost:3000/download (21).png",
     width: 4,
     height: 4,
   },
 
   {
-    src: "https://openjourney-next.vercel.app/1234.png",
-    width: 3,
+    src: "http://localhost:3000/download (24).png",
+    width: 4,
     height: 4,
   },
+  {
+    src: "http://localhost:3000/download (17).png",
+    width: 4,
+    height: 4,
+  },
+
   {
     src: "https://openjourney-next.vercel.app/1235.png",
     width: 3,
     height: 4,
+  },
+  {
+    src: "http://localhost:3000/download (23).png",
+    width: 4,
+    height: 4,
+  },
+  {
+    src: "http://localhost:3000/download (20).png",
+    width: 2,
+    height: 2,
+  },
+  {
+    src: "http://localhost:3000/download (25).png",
+    width: 4,
+    height: 4,
+  },
+  {
+    src: "http://localhost:3000/download (16).png",
+    width: 2,
+    height: 2,
+  },
+  {
+    src: "http://localhost:3000/download (26).png",
+    width: 4,
+    height: 4,
+  },
+  {
+    src: "http://localhost:3000/download (18).png",
+    width: 2,
+    height: 2,
+  },
+  {
+    src: "http://localhost:3000/download (27).png",
+    width: 4,
+    height: 4,
+  },
+  {
+    src: "http://localhost:3000/download (19).png",
+    width: 2,
+    height: 2,
   },
 ];
 

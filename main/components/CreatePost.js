@@ -31,6 +31,7 @@ const CreatePost = () => {
     if (loading) {
       const interval = setInterval(() => {
         fetch("https://kind-jade-wombat-wear.cyclic.app/progress")
+        // fetch("http://localhost:5000/progress")
           .then((res) => res.json())
           .then((data) => {
             setProgress(data.progress);
