@@ -1,5 +1,6 @@
 "use client";
 import Gallery from "react-photo-gallery";
+import Footer from "@/main/components/footer";
 
 // all the photos from public folder
 const photos = [
@@ -143,6 +144,7 @@ export default function Wall() {
       <div className="w-full flex flex-row items-center justify-center text-center text-1xl px-6 pt-24">
         <Gallery photos={photos} />
       </div>
+      <Footer />
     </div>
   );
 }
