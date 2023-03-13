@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { preview } from "../assets";
 import { getRandomPrompt } from "../utils";
 import { FormField, Loader } from ".";
@@ -24,6 +24,26 @@ const CreatePost = () => {
   const [selectedCfg, setSelectedCfg] = useState("7");
   const [generatingImg, setGeneratingImg] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [progress, setProgress] = useState(0);
+
+
+  useEffect(() => {
+    if (loading) {
+      const interval = setInterval(() => {
+        fetch("http://localhost:5000/progress")
+          .then((res) => res.json())
+          .then((data) => {
+            setProgress(data.progress);
+          });
+      }, 1000);
+      return () => {
+        console.log("cleanup")
+        setLoading(false);
+        clearInterval(interval);
+      };
+    }
+  }, [loading]);
+
 
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -37,6 +57,7 @@ const CreatePost = () => {
     if (form.prompt) {
       try {
         setGeneratingImg(true);
+        setLoading(true);
 
         const response = await fetch(
           "https://kind-jade-wombat-wear.cyclic.app/test-raw",
@@ -61,7 +82,6 @@ const CreatePost = () => {
         setPreviewImg(`data:image/png;base64,${data.images[0]}`);
         setForm({ ...form, photo: `data:image/png;base64,${data.images[0]}` });
         setPrmpt({
-          ...prmpt,
           prompt: form.prompt,
           selectedSteps: selectedSteps,
           selectedSampler: selectedSampler,
@@ -71,6 +91,7 @@ const CreatePost = () => {
       } catch (err) {
         alert(err);
       } finally {
+        setLoading(false);
         setGeneratingImg(false);
       }
     } else {
@@ -86,15 +107,6 @@ const CreatePost = () => {
 
   return (
     <section className="md:px-10 mx-auto">
-      {/* <div>
-        <h1 className="px-3 font-extrabold text-[#222328] text-[32px]">
-          Create
-        </h1>
-        <p className="px-3 mt-2 max-w-7xl text-[#666e75] text-[14px] ">
-          Generate an imaginative image through Stable Diffusion AI - midjourney
-          v4 Model.
-        </p>
-      </div> */}
 
       <form className="px-3 mt-8 " onSubmit={handleSubmit}>
         <div className="flex flex-col lg:flex-row gap-5 justify-between">
@@ -281,29 +293,50 @@ const CreatePost = () => {
             </div>
           </div>
           <div className="flex flex-end">
-            <div className="relative bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 md:max-w-md flex justify-center items-center">
-              {form.photo ? (
-                <Image
-                  // src={form.photo}
-                  src={previewImg}
-                  alt={form.prompt}
-                  className="w-full h-full object-contain rounded-xl"
-                  width={512}
-                  height={512}
-                ></Image>
-              ) : (
-                <Image
-                  src={preview}
-                  alt="preview"
-                  className="w-9/12 h-9/12 object-contain opacity-40"
-                ></Image>
-              )}
+            <div>
+              <div className="relative bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 md:max-w-md flex justify-center items-center">
+                {form.photo ? (
+                  <Image
+                    // src={form.photo}
+                    src={previewImg}
+                    alt={form.prompt}
+                    className="w-full h-full object-contain rounded-xl"
+                    width={512}
+                    height={512}
+                  ></Image>
+                ) : (
+                  <Image
+                    src={preview}
+                    alt="preview"
+                    className="w-9/12 h-9/12 object-contain opacity-40"
+                  ></Image>
+                )}
 
-              {generatingImg && (
-                <div className="absolute inset-0 z-0 flex justify-center items-center bg-[rgba(0,0,0,0.5)] rounded-lg">
-                  <Loader />
+                {generatingImg && (
+                  <div className="absolute inset-0 z-0 flex justify-center items-center bg-[rgba(0,0,0,0.5)] rounded-lg">
+                    <Loader />
+                  </div>
+                )}
+              </div>
+
+              {generatingImg ? (
+                <div>
+                  <div class="flex justify-between m-1 pt-2">
+                    <span class="text-base font-medium text-blue-700">
+                      Progress
+                    </span>
+                    <span class="text-sm font-medium text-blue-700 ">
+                      {Math.trunc(progress * 100)}%
+                    </span>
+                  </div>
+                  <div class="w-full bg-gray-300 rounded-full h-2.5 ">
+                    <div
+                      class="bg-blue-600 h-2.5 rounded-full"
+                      style={{ width: `${progress * 100}%` }}
+                    ></div>
+                  </div>
                 </div>
-              )}
+              ) : null}
             </div>
           </div>
         </div>
@@ -320,36 +353,6 @@ const CreatePost = () => {
 
         <div className="h-10"></div>
       </form>
-      {/* <div className="w-full flex flex-col items-start justify-center  px-6 bottom-0 ">
-        <div className="w-full flex flex-row items-center justify-center text-center text-1xl px-6 pt-9">
-          <p>Made by Saransh Bibiyan</p>
-          <div>
-            <div className=" m-2 p-5 rounded-xl flex flex-row items-center justify-center space-x-2 mb-1">
-              <a
-                href="https://github.com/Saransh29"
-                rel="noreferrer"
-                target="_blank"
-              >
-                <AiOutlineGithub
-                  className="hover:-translate-y-1 transition-transform cursor-pointer text-black "
-                  size={30}
-                />
-              </a>
-
-              <a
-                href="https://www.linkedin.com/in/saransh-bibiyan/"
-                rel="noreferrer"
-                target="_blank"
-              >
-                <AiOutlineLinkedin
-                  className="hover:-translate-y-1 transition-transform cursor-pointer text-black"
-                  size={30}
-                />
-              </a>
-            </div>
-          </div>
-        </div>
-      </div> */}
     </section>
   );
 };

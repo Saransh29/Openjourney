@@ -109,13 +109,3 @@ export default function Wall() {
     </div>
   );
 }
-
-{
-  /* export default function Wall(){
-    return (
-        <div>
-            
-        </div>
-    );
-} */
-}
