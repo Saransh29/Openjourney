@@ -9,7 +9,7 @@ const photos = [
     height: 4,
   },
   {
-    src: "http://localhost:3000/download (9).png",
+    src: "https://openjourney-next.vercel.app/download (9).png",
     width: 1,
     height: 1,
   },
@@ -41,7 +41,7 @@ const photos = [
     height: 4,
   },
   {
-    src: "http://localhost:3000/download.png",
+    src: "https://openjourney-next.vercel.app/download.png",
     width: 4,
     height: 4,
   },
@@ -74,18 +74,18 @@ const photos = [
     height: 4,
   },
   {
-    src: "http://localhost:3000/download (21).png",
+    src: "https://openjourney-next.vercel.app/download (21).png",
     width: 4,
     height: 4,
   },
 
   {
-    src: "http://localhost:3000/download (24).png",
+    src: "https://openjourney-next.vercel.app/download (24).png",
     width: 4,
     height: 4,
   },
   {
-    src: "http://localhost:3000/download (17).png",
+    src: "https://openjourney-next.vercel.app/download (17).png",
     width: 4,
     height: 4,
   },
@@ -96,42 +96,42 @@ const photos = [
     height: 4,
   },
   {
-    src: "http://localhost:3000/download (23).png",
+    src: "https://openjourney-next.vercel.app/download (23).png",
     width: 4,
     height: 4,
   },
   {
-    src: "http://localhost:3000/download (20).png",
+    src: "https://openjourney-next.vercel.app/download (20).png",
     width: 2,
     height: 2,
   },
   {
-    src: "http://localhost:3000/download (25).png",
+    src: "https://openjourney-next.vercel.app/download (25).png",
     width: 4,
     height: 4,
   },
   {
-    src: "http://localhost:3000/download (16).png",
+    src: "https://openjourney-next.vercel.app/download (16).png",
     width: 2,
     height: 2,
   },
   {
-    src: "http://localhost:3000/download (26).png",
+    src: "https://openjourney-next.vercel.app/download (26).png",
     width: 4,
     height: 4,
   },
   {
-    src: "http://localhost:3000/download (18).png",
+    src: "https://openjourney-next.vercel.app/download (18).png",
     width: 2,
     height: 2,
   },
   {
-    src: "http://localhost:3000/download (27).png",
+    src: "https://openjourney-next.vercel.app/download (27).png",
     width: 4,
     height: 4,
   },
   {
-    src: "http://localhost:3000/download (19).png",
+    src: "https://openjourney-next.vercel.app/download (19).png",
     width: 2,
     height: 2,
   },
