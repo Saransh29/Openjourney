@@ -107,7 +107,7 @@ const CreatePost = () => {
   };
 
   return (
-    <section className="md:px-10 mx-auto">
+    <section className="pt-10 md:px-10 mx-auto">
 
       <form className="px-3 mt-8 " onSubmit={handleSubmit}>
         <div className="flex flex-col lg:flex-row gap-5 justify-between">
