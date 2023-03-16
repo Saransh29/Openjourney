@@ -10,11 +10,20 @@ export default function About() {
         <ul className="list-outside list-disc ml-6 px-10">
           <li className="text-1xl max-w-3xl pb-4">
             Generate an imaginative image through Stable Diffusion AI -
-            midjourney v4 Model.
+            midjourney v4 Model{" "}
+            <a
+              className="text-blue-500"
+              href="https://huggingface.co/prompthero/openjourney"
+              rel="noreferrer"
+              target="_blank"
+            >
+              (link){" "}
+            </a>
+            .
           </li>
           <li className="text-1xl max-w-3xl pb-4">
-            GCP VM instance with 8 vCPUs and 30 GB of memory. 1 GPU Tesla T4.
-            Stable Diffusion AI - midjourney v4 Model.
+            GCP VM instance with n1-8 vCPUs and 80 GB of memory. 1 GPU - Tesla
+            T4.
           </li>
           <li className="text-1xl max-w-3xl pb-4">
             Connected from VM to API using SSH tunnels.
