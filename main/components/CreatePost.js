@@ -113,7 +113,7 @@ const CreatePost = () => {
                 htmlFor="prompt"
                 className="block text-sm font-medium text-gray-900"
               >
-                Prompt test
+                Prompt
               </label>
               <button
                 type="button"
