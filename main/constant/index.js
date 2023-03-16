@@ -10,7 +10,6 @@ export const surpriseMePrompts = [
   "“Candid moments,” “Urban landscapes,” “Street life,” “Stories in motion,” “Street portraits.”",
   "“Lit cityscapes,” “Starry skies,” “Moonlit landscapes,” “Night time portraits,” “Long exposures.”",
   "a sunlit indoor lounge area with a pool with clear water and another pool with translucent pastel pink water, next to a big window, digital art",
-  '"a sea otter with a pearl earring" by Johannes Vermeer',
   "A winter full of regret: An art piece depicting the feeling of regret in a winter setting, with a focus on snow and frozen landscapes.",
   "Fairy tales: A whimsical, dreamy image of a cute animal surrounded by elements inspired by fairy tales, such as magical creatures and enchanted landscapes.",
   "5 and Octane Render: An art piece showcasing a cute animal with a 5 aspect ratio and rendered",
