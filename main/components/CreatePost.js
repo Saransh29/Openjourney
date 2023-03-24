@@ -12,6 +12,7 @@ const CreatePost = () => {
     selectedSteps: "",
     selectedSampler: "",
     selectedCfg: "",
+    image: "",
   });
 
   const [prompt, setPrompt] = useState("");
@@ -48,6 +49,40 @@ const CreatePost = () => {
     setPrompt(randomPrompt);
   };
 
+  const MongoPost = async () => {
+    try {
+      const response = await fetch(
+        "https://kind-jade-wombat-wear.cyclic.app/mongo",
+        // "http://localhost:5000/mongo",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            prompt: prmpt.prompt,
+            selectedSteps: prmpt.selectedSteps,
+            selectedSampler: prmpt.selectedSampler,
+            selectedCfg: prmpt.selectedCfg,
+            image: prmpt.image,
+          }),
+        }
+      );
+      const data = await response.json();
+      console.log(data);
+    } catch (err) {
+      alert(err);
+    }
+  };
+
+  // when image is generated, save it to mongoDB
+  useEffect(() => {
+    if (prmpt.image) {
+      MongoPost();
+    }
+  }, [prmpt]);
+
+
   const generateImage = async () => {
     if (prompt) {
       try {
@@ -75,14 +110,17 @@ const CreatePost = () => {
         const data = await response.json();
 
         setPreviewImg(`data:image/png;base64,${data.images[0]}`);
+        // await data before setting state
 
         setPrmpt({
           prompt: prompt,
           selectedSteps: selectedSteps,
           selectedSampler: selectedSampler,
           selectedCfg: selectedCfg,
+          image: `data:image/png;base64,${data.images[0]}`,
         });
-        console.log(prmpt);
+
+        // console.log(prmpt);
       } catch (err) {
         alert(err);
       } finally {
