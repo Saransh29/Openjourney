@@ -4,10 +4,71 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { AiOutlineGithub, AiOutlineLinkedin } from "react-icons/ai";
 import Gallery from "react-photo-gallery";
+import Footer from "@/main/components/footer";
+
+export async function generateStaticParams() {
+  const data = await fetch(
+    "https://stable-diff-api-production.up.railway.app/posts"
+  );
+  // const data = await fetch("http://localhost:5000/posts");
+  const res = await data.json();
+  return res.data.map((test) => ({
+    gen: toString(test._id),
+  }));
+}
 
 export default function About() {
   const [data, setData] = useState([]);
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState([
+    {
+      src: "https://openjourney-next.vercel.app/1231.png",
+      width: 3,
+      height: 4,
+    },
+    {
+      src: "https://openjourney-next.vercel.app/download (9).png",
+      width: 1,
+      height: 1,
+    },
+    {
+      src: "https://openjourney-next.vercel.app/1232.png",
+      width: 3,
+      height: 4,
+    },
+
+    {
+      src: "https://openjourney-next.vercel.app/download (14).png",
+      width: 1,
+      height: 1,
+    },
+
+    {
+      src: "https://openjourney-next.vercel.app/download (2).png",
+      width: 4,
+      height: 4,
+    },
+    {
+      src: "https://openjourney-next.vercel.app/download (3).png",
+      width: 4,
+      height: 4,
+    },
+    {
+      src: "https://openjourney-next.vercel.app/1233.png",
+      width: 3,
+      height: 4,
+    },
+    {
+      src: "https://openjourney-next.vercel.app/download.png",
+      width: 4,
+      height: 4,
+    },
+
+    {
+      src: "https://openjourney-next.vercel.app/og.png",
+      width: 4,
+      height: 4,
+    },
+  ]);
 
   const getData = async () => {
     // const res = await fetch("https://kind-jade-wombat-wear.cyclic.app/posts");
@@ -17,24 +78,46 @@ export default function About() {
     // const res = await fetch("http://localhost:5000/posts");
     const temp = await res.json();
     const d = temp.data;
-    const imgs = d.map((item) => {
-      if (item.height === 768) {
-        return {
-          src: item.image,
-          width: 3,
-          height: 4,
-        };
-      } else {
-        return {
-          src: item.image,
-          width: 4,
-          height: 4,
-        };
-      }
-    });
+    const imgs = [
+      ...images,
+      ...d.map((item) => {
+        if (item.height === 768) {
+          return {
+            src: item.image,
+            width: 3,
+            height: 4,
+          };
+        } else {
+          return {
+            src: item.image,
+            width: 4,
+            height: 4,
+          };
+        }
+      }),
+    ];
+
     setImages(imgs);
-    setData(d);
+    // add the new data to the existing data
+    setData([...data, ...d]);
+    // setData(d);
   };
+
+  console.log(data);
+
+  // console.log(images);
+
+  // onscroll call getData to get more images and add to images array
+  // useEffect(() => {
+  //   window.addEventListener("scroll", () => {
+  //     if (
+  //       window.innerHeight + document.documentElement.scrollTop ===
+  //       document.documentElement.offsetHeight
+  //     ) {
+  //       getData();
+  //     }
+  //   });
+  // }, []);
 
   useEffect(() => {
     getData();
@@ -51,6 +134,7 @@ export default function About() {
           {data.length > 0 &&
             data.map((item) => (
               <Photo
+                rt={item._id}
                 key={item._id}
                 prompt={item.prompt}
                 steps={item.steps}
@@ -58,58 +142,14 @@ export default function About() {
                 cfg_scale={item.cfg_scale}
                 image={item.image}
               />
-              // {/* <div className="w-1/3 p-5">
-              //   <p>{item.prompt}</p>
-              //   <p> Steps: {item.steps}</p>
-              //   <p> Sampler: {item.sampler_index}</p>
-              //   <p> Cfg : {item.cfg_scale}</p>
-              // </div> */},
-
-              // {/* <Image
-              //   className="rounded-xl"
-              //   src={item.image}
-              //   alt={item.prompt}
-              //   height={512}
-              //   width={512}
-              // ></Image> */}
             ))}
         </div>
       </div>
-      <div className="h-20"></div>
-      <p className="w-full text-center text-3xl">Testing Grid</p>
+      <div className="h-10"></div>
+      {/* <p className="w-full text-center text-3xl">Testing Grid</p> */}
 
       <Gallery photos={images} />
-
-      <div className="w-full flex flex-col items-start justify-center  px-6">
-        <div className="w-full flex flex-row items-center justify-center text-center text-1xl px-6 pt-24">
-          <p>Made by Saransh Bibiyan</p>
-          <div>
-            <div className=" m-2 p-5 rounded-xl flex flex-row items-center justify-center space-x-2 mb-1">
-              <a
-                href="https://github.com/Saransh29"
-                rel="noreferrer"
-                target="_blank"
-              >
-                <AiOutlineGithub
-                  className="hover:-translate-y-1 transition-transform cursor-pointer text-black "
-                  size={30}
-                />
-              </a>
-
-              <a
-                href="https://www.linkedin.com/in/saransh-bibiyan/"
-                rel="noreferrer"
-                target="_blank"
-              >
-                <AiOutlineLinkedin
-                  className="hover:-translate-y-1 transition-transform cursor-pointer text-black"
-                  size={30}
-                />
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Footer />
     </div>
   );
 }

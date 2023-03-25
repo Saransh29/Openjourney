@@ -1,4 +1,6 @@
+"use client";
 import Image from "next/image";
+import Link from "next/link";
 export default function Photo(item) {
   return (
     <div className="bg-white m-3 rounded-xl shadow-xl ">
@@ -8,14 +10,15 @@ export default function Photo(item) {
         <p> Sampler : {item.sampler_index}</p>
         <p> Cfg : {item.cfg_scale}</p> */}
       </div>
-
-      <Image
-        className="rounded-xl"
-        src={item.image}
-        alt={item.prompt}
-        height={512}
-        width={512}
-      ></Image>
+      <Link href={`/${item.rt}`}>
+        <Image
+          className="rounded-xl"
+          src={item.image}
+          alt={item.prompt}
+          height={512}
+          width={512}
+        ></Image>
+      </Link>
     </div>
   );
 }
