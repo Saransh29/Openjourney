@@ -13,6 +13,9 @@ module.exports = {
       fontFamily: {
         montserrat: ["var(--font-montserrat)"],
       },
+      gridTemplateColumns: {
+        fluid: "repeat(auto-fill, minmax(20rem, 2fr))",
+      },
     },
   },
   plugins: [],
