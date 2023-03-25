@@ -6,7 +6,10 @@ export default function About() {
   const [data, setData] = useState([]);
 
   const getData = async () => {
-    const res = await fetch("https://kind-jade-wombat-wear.cyclic.app/posts");
+    // const res = await fetch("https://kind-jade-wombat-wear.cyclic.app/posts");
+    const res = await fetch(
+      "https://stable-diff-api-production.up.railway.app/posts"
+    );
     // const res = await fetch("http://localhost:5000/posts");
     const temp = await res.json();
     const d = temp.data;
