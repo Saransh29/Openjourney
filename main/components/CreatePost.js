@@ -28,14 +28,14 @@ const CreatePost = () => {
     if (loading) {
       const interval = setInterval(() => {
         fetch("https://kind-jade-wombat-wear.cyclic.app/progress")
-        // fetch("http://localhost:5000/progress")
+          // fetch("http://localhost:5000/progress")
           .then((res) => res.json())
           .then((data) => {
             setProgress(data.progress);
           });
       }, 1000);
       return () => {
-        console.log("cleanup");
+        // console.log("cleanup");
         setLoading(false);
         clearInterval(interval);
       };
@@ -81,7 +81,6 @@ const CreatePost = () => {
       MongoPost();
     }
   }, [prmpt]);
-
 
   const generateImage = async () => {
     if (prompt) {
@@ -176,30 +175,30 @@ const CreatePost = () => {
             <div className="py-3 flex flex-col">
               <div className="flex flex-row">
                 <label
-                  for="cfg"
-                  class="block mb-2 text-sm font-medium text-gray-900 px-1"
+                  htmlFor="cfg"
+                  className="block mb-2 text-sm font-medium text-gray-900 px-1"
                 >
                   CFG
                 </label>
-                <div class="relative flex flex-col items-center group">
+                <div className="relative flex flex-col items-center group">
                   <svg
-                    class="w-5 h-5"
+                    className="w-5 h-5"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                     fill="currentColor"
                   >
                     <path
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
-                      clip-rule="evenodd"
+                      clipRule="evenodd"
                     />
                   </svg>
-                  <div class="absolute bottom-0 flex flex-col items-center hidden mb-6 group-hover:flex">
-                    <span class="relative z-10 p-2 text-xs leading-none text-white whitespace-no-wrap bg-black shadow-lg">
+                  <div className="absolute bottom-0 flex flex-col items-center hidden mb-6 group-hover:flex">
+                    <span className="relative z-10 p-2 text-xs leading-none text-white whitespace-no-wrap bg-black shadow-lg">
                       CFG scale adjusts how much the image looks closer to the
                       prompt and/ or input image.
                     </span>
-                    <div class="w-3 h-3 -mt-2 rotate-45 bg-black"></div>
+                    <div className="w-3 h-3 -mt-2 rotate-45 bg-black"></div>
                   </div>
                 </div>
               </div>
@@ -208,7 +207,7 @@ const CreatePost = () => {
                 id="cfg"
                 value={selectedCfg}
                 onChange={(e) => setSelectedCfg(e.target.value)}
-                class="border bg-gray-50 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-42 px-2.5 py-2  "
+                className="border bg-gray-50 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-42 px-2.5 py-2  "
               >
                 <option value="3">3</option>
                 <option value="4">4</option>
@@ -222,29 +221,29 @@ const CreatePost = () => {
             <div className="py-3 flex flex-col px-5">
               <div className="flex flex-row">
                 <label
-                  for="cfg"
-                  class="block mb-2 text-sm font-medium text-gray-900 px-1"
+                  htmlFor="cfg"
+                  className="block mb-2 text-sm font-medium text-gray-900 px-1"
                 >
                   Steps
                 </label>
-                <div class="relative flex flex-col items-center group">
+                <div className="relative flex flex-col items-center group">
                   <svg
-                    class="w-5 h-5"
+                    className="w-5 h-5"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                     fill="currentColor"
                   >
                     <path
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
-                      clip-rule="evenodd"
+                      clipRule="evenodd"
                     />
                   </svg>
-                  <div class="absolute bottom-0 flex flex-col items-center hidden mb-6 group-hover:flex">
-                    <span class="relative z-10 p-2 text-xs leading-none text-white whitespace-no-wrap bg-black shadow-lg">
+                  <div className="absolute bottom-0 flex flex-col items-center hidden mb-6 group-hover:flex">
+                    <span className="relative z-10 p-2 text-xs leading-none text-white whitespace-no-wrap bg-black shadow-lg">
                       Number of sampling steps , generally 30 is good enough.
                     </span>
-                    <div class="w-3 h-3 -mt-2 rotate-45 bg-black"></div>
+                    <div className="w-3 h-3 -mt-2 rotate-45 bg-black"></div>
                   </div>
                 </div>
               </div>
@@ -253,7 +252,7 @@ const CreatePost = () => {
                 id="Steps"
                 value={selectedSteps}
                 onChange={(e) => setSelectedSteps(e.target.value)}
-                class="border bg-gray-50 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-42 px-2.5 py-2  "
+                className="border bg-gray-50 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-42 px-2.5 py-2  "
               >
                 <option value="10">10</option>
                 <option value="20">20</option>
@@ -265,31 +264,31 @@ const CreatePost = () => {
             <div className="py-3 flex flex-col">
               <div className="flex flex-row">
                 <label
-                  for="Sampler"
-                  class="block mb-2 text-sm font-medium text-gray-900 px-1"
+                  htmlFor="Sampler"
+                  className="block mb-2 text-sm font-medium text-gray-900 px-1"
                 >
                   Sampler
                 </label>
-                <div class="relative flex flex-col items-center group">
+                <div className="relative flex flex-col items-center group">
                   <svg
-                    class="w-5 h-5"
+                    className="w-5 h-5"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                     fill="currentColor"
                   >
                     <path
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
-                      clip-rule="evenodd"
+                      clipRule="evenodd"
                     />
                   </svg>
-                  <div class="absolute bottom-0 flex flex-col items-center hidden mb-6 group-hover:flex">
-                    <span class="relative z-10 p-2 text-xs leading-none text-white whitespace-no-wrap bg-black shadow-lg">
+                  <div className="absolute bottom-0 flex flex-col items-center hidden mb-6 group-hover:flex">
+                    <span className="relative z-10 p-2 text-xs leading-none text-white whitespace-no-wrap bg-black shadow-lg">
                       Sampling Methods- Euler a: quickest, but not as good as
                       DPM2 a
                     </span>
 
-                    <div class="w-3 h-3 -mt-2 rotate-45 bg-black"></div>
+                    <div className="w-3 h-3 -mt-2 rotate-45 bg-black"></div>
                   </div>
                 </div>
               </div>
@@ -298,7 +297,7 @@ const CreatePost = () => {
                 id="Sampler"
                 value={selectedSampler}
                 onChange={(e) => setSelectedSampler(e.target.value)}
-                class="border bg-gray-50 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-42 px-2.5 py-2  "
+                className="border bg-gray-50 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-42 px-2.5 py-2  "
               >
                 <option value="Euler a">Euler a</option>
                 <option value="DPM2 a">DPM2 a</option>
@@ -362,17 +361,17 @@ const CreatePost = () => {
 
             {generatingImg ? (
               <div>
-                <div class="flex justify-between m-1 pt-2">
-                  <span class="text-base font-medium text-blue-700">
+                <div className="flex justify-between m-1 pt-2">
+                  <span className="text-base font-medium text-blue-700">
                     Progress
                   </span>
-                  <span class="text-sm font-medium text-blue-700 ">
+                  <span className="text-sm font-medium text-blue-700 ">
                     {Math.trunc(progress * 100)}%
                   </span>
                 </div>
-                <div class="w-full bg-gray-300 rounded-full h-2.5 ">
+                <div className="w-full bg-gray-300 rounded-full h-2.5 ">
                   <div
-                    class="bg-blue-600 h-2.5 rounded-full"
+                    className="bg-blue-600 h-2.5 rounded-full"
                     style={{ width: `${progress * 100}%` }}
                   ></div>
                 </div>
