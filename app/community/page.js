@@ -1,8 +1,6 @@
 "use client";
 import Photo from "@/main/components/item";
-import Image from "next/image";
 import { useState, useEffect } from "react";
-import { AiOutlineGithub, AiOutlineLinkedin } from "react-icons/ai";
 import Gallery from "react-photo-gallery";
 import Footer from "@/main/components/footer";
 
@@ -99,25 +97,29 @@ export default function About() {
 
     setImages(imgs);
     // add the new data to the existing data
-    setData([...data, ...d]);
+    setData((old) => [...old, ...d]);
     // setData(d);
   };
 
-  console.log(data);
-
+  // console.log(data);
   // console.log(images);
 
-  // onscroll call getData to get more images and add to images array
-  // useEffect(() => {
-  //   window.addEventListener("scroll", () => {
-  //     if (
-  //       window.innerHeight + document.documentElement.scrollTop ===
-  //       document.documentElement.offsetHeight
-  //     ) {
-  //       getData();
-  //     }
-  //   });
-  // }, []);
+  useEffect(() => {
+    if (data.length < 34) {
+      const interval = setInterval(() => {
+        fetch("https://stable-diff-api-production.up.railway.app/posts")
+          // fetch("http://localhost:5000/posts")
+          .then((res) => res.json())
+          .then((temp) => {
+            // add the new data to the data array
+            setData((old) => [...old, ...temp.data]);
+          });
+      }, 4000);
+      return () => {
+        clearInterval(interval);
+      };
+    }
+  }, [data.length]);
 
   useEffect(() => {
     getData();

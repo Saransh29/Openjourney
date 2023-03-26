@@ -170,6 +170,11 @@ const CreatePost = () => {
               required
             />
           </div>
+          <div className="">
+            <p className=" text-red-400">
+              Ran out of GCP Credits. Stable Diffusion settings disabled.
+            </p>
+          </div>
 
           <div className="flex ">
             <div className="py-3 flex flex-col">
@@ -205,9 +210,10 @@ const CreatePost = () => {
 
               <select
                 id="cfg"
+                disabled
                 value={selectedCfg}
                 onChange={(e) => setSelectedCfg(e.target.value)}
-                className="border bg-gray-50 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-42 px-2.5 py-2  "
+                className="border bg-gray-400 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-42 px-2.5 py-2  "
               >
                 <option value="3">3</option>
                 <option value="4">4</option>
@@ -250,9 +256,10 @@ const CreatePost = () => {
 
               <select
                 id="Steps"
+                disabled
                 value={selectedSteps}
                 onChange={(e) => setSelectedSteps(e.target.value)}
-                className="border bg-gray-50 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-42 px-2.5 py-2  "
+                className="border bg-gray-400 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-42 px-2.5 py-2  "
               >
                 <option value="10">10</option>
                 <option value="20">20</option>
@@ -294,10 +301,11 @@ const CreatePost = () => {
               </div>
 
               <select
+                disabled
                 id="Sampler"
                 value={selectedSampler}
                 onChange={(e) => setSelectedSampler(e.target.value)}
-                className="border bg-gray-50 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-42 px-2.5 py-2  "
+                className="border bg-gray-400 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-42 px-2.5 py-2  "
               >
                 <option value="Euler a">Euler a</option>
                 <option value="DPM2 a">DPM2 a</option>
@@ -310,6 +318,7 @@ const CreatePost = () => {
             </div>
             <div className="mt-8 px-8 hidden md:block">
               <button
+                // disabled
                 type="button"
                 onClick={generateImage}
                 className=" text-white bg-green-700 font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center"
