@@ -7,6 +7,10 @@ import Loader from "./Loader";
 import Image from "next/image";
 
 const CreatePost = () => {
+  const [Op, setOp] = useState({
+    prompt: "",
+    image: "",
+  });
   const [prmpt, setPrmpt] = useState({
     prompt: "",
     selectedSteps: "",
@@ -22,25 +26,25 @@ const CreatePost = () => {
   const [selectedCfg, setSelectedCfg] = useState("7");
   const [generatingImg, setGeneratingImg] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [progress, setProgress] = useState(0);
+  // const [progress, setProgress] = useState(0);
 
-  useEffect(() => {
-    if (loading) {
-      const interval = setInterval(() => {
-        fetch("https://kind-jade-wombat-wear.cyclic.app/progress")
-          // fetch("http://localhost:5000/progress")
-          .then((res) => res.json())
-          .then((data) => {
-            setProgress(data.progress);
-          });
-      }, 1000);
-      return () => {
-        // console.log("cleanup");
-        setLoading(false);
-        clearInterval(interval);
-      };
-    }
-  }, [loading]);
+  // useEffect(() => {
+  //   if (loading) {
+  //     const interval = setInterval(() => {
+  //       fetch("https://kind-jade-wombat-wear.cyclic.app/progress")
+  //         // fetch("http://localhost:5000/progress")
+  //         .then((res) => res.json())
+  //         .then((data) => {
+  //           setProgress(data.progress);
+  //         });
+  //     }, 1000);
+  //     return () => {
+  //       // console.log("cleanup");
+  //       setLoading(false);
+  //       clearInterval(interval);
+  //     };
+  //   }
+  // }, [loading]);
 
   const handlePromptChange = (e) => setPrompt(e.target.value);
 
@@ -60,11 +64,12 @@ const CreatePost = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            prompt: prmpt.prompt,
-            selectedSteps: prmpt.selectedSteps,
-            selectedSampler: prmpt.selectedSampler,
-            selectedCfg: prmpt.selectedCfg,
-            image: prmpt.image,
+            prompt: Op.prompt,
+            // selectedSteps: prmpt.selectedSteps,
+            // selectedSampler: prmpt.selectedSampler,
+            // selectedCfg: prmpt.selectedCfg,
+            image: Op.image,
+            model: "dalle",
           }),
         }
       );
@@ -76,49 +81,42 @@ const CreatePost = () => {
   };
 
   // when image is generated, save it to mongoDB
+  // useEffect(() => {
+  //   if (prmpt.image) {
+  //     MongoPost();
+  //   }
+  // }, [prmpt]);
+
   useEffect(() => {
-    if (prmpt.image) {
+    if (Op.image) {
       MongoPost();
     }
-  }, [prmpt]);
+  }, [Op.image]);
 
-  const generateImage = async () => {
+  const openAIImage = async () => {
     if (prompt) {
       try {
         setGeneratingImg(true);
         setLoading(true);
-
         const response = await fetch(
-          "https://kind-jade-wombat-wear.cyclic.app/image-gen",
-          // "http://localhost:5000/image-gen",
+          "https://stable-diff-api-production.up.railway.app/api/v1/dalle",
+          // "http://localhost:5000/api/v1/dalle",
           {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              prompt: `mdjrny-v4 style , ${prompt}`,
-              steps: selectedSteps,
-              cfg_scale: selectedCfg,
-              sampler_index: selectedSampler,
-              height: 512,
-              width: 512,
+              prompt: `${prompt}`,
             }),
           }
         );
         const data = await response.json();
-
-        setPreviewImg(`data:image/png;base64,${data.images[0]}`);
-        // await data before setting state
-
-        setPrmpt({
+        setPreviewImg(`data:image/png;base64,${data.photo}`);
+        setOp({
           prompt: prompt,
-          selectedSteps: selectedSteps,
-          selectedSampler: selectedSampler,
-          selectedCfg: selectedCfg,
-          image: `data:image/png;base64,${data.images[0]}`,
+          image: `data:image/png;base64,${data.photo}`,
         });
-
         // console.log(prmpt);
       } catch (err) {
         alert(err);
@@ -131,8 +129,57 @@ const CreatePost = () => {
     }
   };
 
+  // const generateImage = async () => {
+  //   if (prompt) {
+  //     try {
+  //       setGeneratingImg(true);
+  //       setLoading(true);
+
+  //       const response = await fetch(
+  //         "https://kind-jade-wombat-wear.cyclic.app/image-gen",
+  //         // "http://localhost:5000/image-gen",
+  //         {
+  //           method: "POST",
+  //           headers: {
+  //             "Content-Type": "application/json",
+  //           },
+  //           body: JSON.stringify({
+  //             prompt: `mdjrny-v4 style , ${prompt}`,
+  //             steps: selectedSteps,
+  //             cfg_scale: selectedCfg,
+  //             sampler_index: selectedSampler,
+  //             height: 512,
+  //             width: 512,
+  //           }),
+  //         }
+  //       );
+  //       const data = await response.json();
+
+  //       setPreviewImg(`data:image/png;base64,${data.images[0]}`);
+  //       // await data before setting state
+
+  //       setPrmpt({
+  //         prompt: prompt,
+  //         selectedSteps: selectedSteps,
+  //         selectedSampler: selectedSampler,
+  //         selectedCfg: selectedCfg,
+  //         image: `data:image/png;base64,${data.images[0]}`,
+  //       });
+
+  //       // console.log(prmpt);
+  //     } catch (err) {
+  //       alert(err);
+  //     } finally {
+  //       setLoading(false);
+  //       setGeneratingImg(false);
+  //     }
+  //   } else {
+  //     alert("Please provide proper prompt");
+  //   }
+  // };
+
   return (
-    <section className="lg:pt-10 pt-20 md:px-10 mx-auto ">
+    <section className="2xl:pt-10 lg:pt-20 md:pt-32 pt-20 md:px-10 mx-auto ">
       <div className="flex flex-col lg:flex-row gap-5 justify-between">
         <div className="flex flex-col  gap-5 justify-center">
           <div>
@@ -140,8 +187,20 @@ const CreatePost = () => {
               Create
             </h1>
             <p className=" mt-2 max-w-7xl text-[#666e75] text-[14px] pb-5">
-              Generate an imaginative image through Stable Diffusion AI -
-              midjourney v4 Model.
+              Generate an imaginative image through OpenAI&apos;s DALL-E model.{" "}
+              <br />
+              <span className="">
+                Previously used Stable Diffusion AI - midjourney v4 Model. view
+                in{" "}
+                <a className="text-purple-500 " href="/community">
+                  {" "}
+                  Community.
+                </a>
+              </span>
+              <p>
+                Over 400 Images generated by 167 unique visitors from 41
+                Countries
+              </p>
             </p>
           </div>
           <div>
@@ -320,7 +379,8 @@ const CreatePost = () => {
               <button
                 // disabled
                 type="button"
-                onClick={generateImage}
+                // onClick={generateImage}
+                onClick={openAIImage}
                 className=" text-white bg-green-700 font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center"
               >
                 {generatingImg ? "Generating..." : "Generate"}
@@ -368,7 +428,7 @@ const CreatePost = () => {
               )}
             </div>
 
-            {generatingImg ? (
+            {/* {generatingImg ? (
               <div>
                 <div className="flex justify-between m-1 pt-2">
                   <span className="text-base font-medium text-blue-700">
@@ -385,7 +445,7 @@ const CreatePost = () => {
                   ></div>
                 </div>
               </div>
-            ) : null}
+            ) : null} */}
           </div>
         </div>
       </div>
@@ -393,7 +453,8 @@ const CreatePost = () => {
       <div className="mt-5 flex gap-5">
         <button
           type="button"
-          onClick={generateImage}
+          // onClick={generateImage}
+          onClick={openAIImage}
           className=" text-white bg-green-700 font-medium rounded-md text-sm w-full md:w-auto px-5 py-2.5 text-center md:hidden"
         >
           {generatingImg ? "Generating..." : "Generate"}
