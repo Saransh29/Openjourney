@@ -105,7 +105,7 @@ export default function About() {
   // console.log(images);
 
   useEffect(() => {
-    if (data.length < 34) {
+    if (data.length < 30) {
       const interval = setInterval(() => {
         fetch("https://stable-diff-api-production.up.railway.app/posts")
           // fetch("http://localhost:5000/posts")
@@ -114,7 +114,7 @@ export default function About() {
             // add the new data to the data array
             setData((old) => [...old, ...temp.data]);
           });
-      }, 4000);
+      }, 6000);
       return () => {
         clearInterval(interval);
       };
