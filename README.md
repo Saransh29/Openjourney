@@ -1,5 +1,14 @@
 
-# OpenJourney
+<div align="center">
+  <h1 align="center">OpenJourney</h1>
+
+  <p align="center">
+    Visualize your Imagination !
+    <br />
+    <br />
+    <a href="https://openjourney-next.vercel.app/" target="_blank">Visit Now.</a>
+  </p>
+</div>
 
 • Developed a web app to Generate an imaginative image through Stable Diffusion AI - midjourney v4 Model hosted on a GCP VM instance.<br>
 • GCP VM instance connected to REST API via SSH tunnels.<br>
