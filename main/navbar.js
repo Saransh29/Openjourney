@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import { Link } from "react-scroll/modules";
 import { IoMdMenu, IoMdClose } from "react-icons/io";
 
 const NAV_ITEMS = [
@@ -62,18 +61,14 @@ export default function Navbar() {
                       "block lg:inline-block text-inherit  cursor-pointer"
                     }
                     // activeClass="active"
-                    spy={true}
-                    smooth={true}
                     offset={-100}
                     duration={500}
-                    cursor="pointer"
                     onClick={() => setNavbar(!navbar)}
                   >
                     {item.label}
                   </a>
                 );
               })}
-              
             </div>
           </div>
         </div>
