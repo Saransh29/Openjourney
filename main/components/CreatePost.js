@@ -74,11 +74,11 @@ const CreatePost = () => {
           }),
         }
       );
-      const data = await response.json();
+      const temp = await response.json();
       const d = temp.data;
       // console.log(d._id);
       setSavelink(`https://openjourney-next.vercel.app/c/${d._id}`);
-      console.log(data);
+      // console.log(data);
     } catch (err) {
       alert(err);
     }
