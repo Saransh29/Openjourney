@@ -7,6 +7,7 @@ import Loader from "./Loader";
 import Image from "next/image";
 
 const CreatePost = () => {
+  const [savelink, setSavelink] = useState("");
   const [Op, setOp] = useState({
     prompt: "",
     image: "",
@@ -74,6 +75,9 @@ const CreatePost = () => {
         }
       );
       const data = await response.json();
+      const d = temp.data;
+      // console.log(d._id);
+      setSavelink(`https://openjourney-next.vercel.app/c/${d._id}`);
       console.log(data);
     } catch (err) {
       alert(err);
@@ -426,6 +430,13 @@ const CreatePost = () => {
                   <Loader />
                 </div>
               )}
+            </div>
+            <div className="text-center w-full p-5">
+              {savelink ? (
+                <a href={savelink} className="text-1xl">
+                  Share : {savelink}
+                </a>
+              ) : null}
             </div>
 
             {/* {generatingImg ? (
