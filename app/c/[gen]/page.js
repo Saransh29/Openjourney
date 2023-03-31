@@ -20,6 +20,7 @@ export default function GeneratedImage({ params }) {
   useEffect(() => {
     getData();
   }, []);
+  console.log(data.model);
 
   return (
     <div>
@@ -28,9 +29,13 @@ export default function GeneratedImage({ params }) {
         <div className="flex flex-row justify-between">
           <div className="w-1/2 flex flex-col justify-center">
             <p className="py-5">{data.prompt}</p>
-            <p className="text-1xl p-2"> Steps : {data.steps}</p>
-            <p className="text-1xl p-2"> cfg scale :{data.cfg_scale}</p>
-            <p className="text-1xl p-2"> Sampler: {data.sampler_index}</p>
+            {data.model ? null : (
+              <div>
+                <p className="text-1xl p-2"> Steps : {data.steps}</p>
+                <p className="text-1xl p-2"> cfg scale :{data.cfg_scale}</p>
+                <p className="text-1xl p-2"> Sampler: {data.sampler_index}</p>
+              </div>
+            )}
           </div>
           <Image
             className="my-12"
