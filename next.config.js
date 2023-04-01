@@ -8,6 +8,15 @@ const nextConfig = {
     contentDispositionType: "attachment",
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
+  async redirects() {
+    return [
+      {
+        source: "/",
+        destination: "/Community",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;

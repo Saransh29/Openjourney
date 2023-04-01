@@ -385,6 +385,7 @@ const CreatePost = () => {
                 type="button"
                 // onClick={generateImage}
                 onClick={openAIImage}
+                disabled
                 className=" text-white bg-green-700 font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center"
               >
                 {generatingImg ? "Generating..." : "Generate"}
@@ -471,6 +472,7 @@ const CreatePost = () => {
           type="button"
           // onClick={generateImage}
           onClick={openAIImage}
+          disabled
           className=" text-white bg-green-700 font-medium rounded-md text-sm w-full md:w-auto px-5 py-2.5 text-center md:hidden"
         >
           {generatingImg ? "Generating..." : "Generate"}
