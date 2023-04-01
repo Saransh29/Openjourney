@@ -108,7 +108,7 @@ export default function About() {
     if (data.length < 30) {
       const interval = setInterval(() => {
         fetch("https://stable-diff-api-production.up.railway.app/posts")
-          // fetch("http://localhost:5000/posts")
+        // fetch("http://localhost:5000/posts")
           .then((res) => res.json())
           .then((temp) => {
             // add the new data to the data array
@@ -137,7 +137,7 @@ export default function About() {
       </div>
       <div className="h-10"></div>
       <div className="w-full ">
-        <div className="grid">
+        <div className="grid grid-cols-fluid">
           {data.length > 0 &&
             data.map((item) => (
               <Photo
