@@ -5,9 +5,10 @@ import Gallery from "react-photo-gallery";
 import Footer from "@/main/components/footer";
 
 export async function generateStaticParams() {
-  const data = await fetch(
-    "https://stable-diff-api-production.up.railway.app/posts"
-  );
+  // const data = await fetch(
+  //   "https://stable-diff-api-production.up.railway.app/posts"
+  // );
+  const data = await fetch("https://kind-jade-wombat-wear.cyclic.app/posts");
   // const data = await fetch("http://localhost:5000/posts");
   const res = await data.json();
   return res.data.map((test) => ({
@@ -71,7 +72,8 @@ export default function About() {
   const getData = async () => {
     // const res = await fetch("https://kind-jade-wombat-wear.cyclic.app/posts");
     const res = await fetch(
-      "https://stable-diff-api-production.up.railway.app/posts"
+      // "https://stable-diff-api-production.up.railway.app/posts"
+      "https://kind-jade-wombat-wear.cyclic.app/posts"
     );
     // const res = await fetch("http://localhost:5000/posts");
     const temp = await res.json();
@@ -107,8 +109,9 @@ export default function About() {
   useEffect(() => {
     if (data.length < 30) {
       const interval = setInterval(() => {
-        fetch("https://stable-diff-api-production.up.railway.app/posts")
-        // fetch("http://localhost:5000/posts")
+        // fetch("https://stable-diff-api-production.up.railway.app/posts")
+        fetch("https://kind-jade-wombat-wear.cyclic.app/posts")
+          // fetch("http://localhost:5000/posts")
           .then((res) => res.json())
           .then((temp) => {
             // add the new data to the data array

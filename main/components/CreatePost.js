@@ -103,7 +103,8 @@ const CreatePost = () => {
         setGeneratingImg(true);
         setLoading(true);
         const response = await fetch(
-          "https://stable-diff-api-production.up.railway.app/api/v1/dalle",
+          "https://kind-jade-wombat-wear.cyclic.app/api/v1/dalle",
+          // "https://stable-diff-api-production.up.railway.app/api/v1/dalle",
           // "http://localhost:5000/api/v1/dalle",
           {
             method: "POST",

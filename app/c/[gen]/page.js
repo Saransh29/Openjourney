@@ -9,8 +9,11 @@ export default function GeneratedImage({ params }) {
 
   const getData = async () => {
     // const res = await fetch(`http://localhost:5000/post/${gen}`);
+    // const res = await fetch(
+    //   `https://stable-diff-api-production.up.railway.app/post/${gen}`
+    // );
     const res = await fetch(
-      `https://stable-diff-api-production.up.railway.app/post/${gen}`
+      `https://kind-jade-wombat-wear.cyclic.app/post/${gen}`
     );
     const temp = await res.json();
     const d = temp.data;
