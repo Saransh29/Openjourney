@@ -5,15 +5,15 @@ import { IoMdMenu, IoMdClose } from "react-icons/io";
 const NAV_ITEMS = [
   {
     label: "Wall",
-    page: "wall",
+    page: "https://openjourney-next.vercel.app/wall",
   },
   {
     label: "About",
-    page: "about",
+    page: "https://openjourney-next.vercel.app/about",
   },
   {
     label: "Community",
-    page: "community",
+    page: "https://openjourney-next.vercel.app/community",
   },
 ];
 
