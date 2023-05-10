@@ -10,7 +10,7 @@ export default function Photo(item) {
         <p> Sampler : {item.sampler_index}</p>
         <p> Cfg : {item.cfg_scale}</p> */}
       </div>
-      <Link href={`/c/${item.rt}`}>
+      <Link href={`/c/${item.rt}`} target="_blank">
         <Image
           className="rounded-xl"
           src={item.image}
