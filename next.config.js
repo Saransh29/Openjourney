@@ -7,7 +7,7 @@ const nextConfig = {
     dangerouslyAllowSVG: true,
     contentDispositionType: "attachment",
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-    domains: ["db1c7b8a49d4520d9428e7b1097f5bf6.r2.cloudflarestorage.com"],
+    domains: ["pub-c84c666dc6b44affb668786aad0e2eb7.r2.dev"],
   },
   async redirects() {
     return [
