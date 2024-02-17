@@ -8,7 +8,9 @@ export async function generateStaticParams() {
   // const data = await fetch(
   //   "https://stable-diff-api-production.up.railway.app/posts"
   // );
-  const data = await fetch("https://kind-jade-wombat-wear.cyclic.app/posts");
+  const data = await fetch(
+    "https://kind-jade-wombat-wear.cyclic.app/api/v1/db/posts",
+  );
   // const data = await fetch("http://localhost:5000/posts");
   const res = await data.json();
   return res.data.map((test) => ({
@@ -70,12 +72,9 @@ export default function About() {
   ]);
 
   const getData = async () => {
-    // const res = await fetch("https://kind-jade-wombat-wear.cyclic.app/posts");
     const res = await fetch(
-      // "https://stable-diff-api-production.up.railway.app/posts"
-      "https://kind-jade-wombat-wear.cyclic.app/posts"
+      "https://kind-jade-wombat-wear.cyclic.app/api/v1/db/posts",
     );
-    // const res = await fetch("http://localhost:5000/posts");
     const temp = await res.json();
     const d = temp.data;
     const imgs = [
@@ -98,7 +97,6 @@ export default function About() {
     ];
 
     setImages(imgs);
-    // add the new data to the existing data
     setData((old) => [...old, ...d]);
     // setData(d);
   };
@@ -107,22 +105,23 @@ export default function About() {
   // console.log(images);
 
   useEffect(() => {
-    if (data.length < 30) {
-      const interval = setInterval(() => {
-        // fetch("https://stable-diff-api-production.up.railway.app/posts")
-        fetch("https://kind-jade-wombat-wear.cyclic.app/posts")
-          // fetch("http://localhost:5000/posts")
-          .then((res) => res.json())
-          .then((temp) => {
-            // add the new data to the data array
-            setData((old) => [...old, ...temp.data]);
-          });
-      }, 6000);
-      return () => {
-        clearInterval(interval);
-      };
-    }
-  }, [data.length]);
+    getData();
+    // if (data.length < 30) {
+    //   const interval = setInterval(() => {
+    //     // fetch("https://stable-diff-api-production.up.railway.app/posts")
+    //     fetch("https://kind-jade-wombat-wear.cyclic.app/api/v1/db/posts")
+    //       // fetch("http://localhost:5000/posts")
+    //       .then((res) => res.json())
+    //       .then((temp) => {
+    //         // add the new data to the data array
+    //         setData((old) => [...old, ...temp.data]);
+    //       });
+    //   }, 6000);
+    //   return () => {
+    //     clearInterval(interval);
+    //   };
+    // }
+  }, []);
 
   useEffect(() => {
     getData();
